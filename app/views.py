@@ -2,44 +2,31 @@ from flask import Flask, request
 import twitter
 from app import app
 import spotify
+import wikipedia
 
 # static url
-@app.route('/')
-def index():
-    return "Hello, World!"
 
-# url parameters
-@app.route('/endpoint/<input>')
-def endpoint(input):
-    return input
-
-# api with endpoint
-# localhost:5000/nameEndpoint?artist=kanye
-@app.route('/nameEndpoint', methods=['GET'])
-def nameEndpoint():
-    if 'html' in request.args: # Test html here
-        return "<b>This string is bold</b>"
-
-@app.route('/tweet/hashtag', methods=['GET'])
-def hashtagEndpoint():
-    if 'hashtag' in request.args:
-        hashtag = request.args['hashtag']
-        return twitter.getTweetsByHashtag(hashtag)
-
-@app.route('/tweet/keyword', methods=['GET'])
+@app.route('/tweet', methods=['GET'])
 def keywordEndpoint():
     if 'keyword' in request.args:
         keyword = request.args['keyword']
         return twitter.getTweetsByKeyword(keyword)
 
-@app.route('/tweet/location', methods=['GET'])
-def locationEndpoint():
-    if 'location' in request.args:
-        locationString = request.args['location']
-        return twitter.getTweetsByLocation(locationString)
+@app.route('/wikipedia', methods=['GET'])
+def articleEndpoint():
+    if 'article' in request.args:
+        articleName = request.args['article']
+        return wikipedia.getExcerpt(articleName)
 
-@app.route('/artist', methods = ['GET'])
-def artistEndpoint():
+@app.route('/spotify', methods = ['GET'])
+def spotifyEndpoint():
     if 'artist' in request.args:
         artistName = request.args['artist']
         return spotify.getTopTracks(artistName)
+    elif 'song' in request.args:
+        songName = request.args['song']
+        songList =  spotify.getSong(songName)
+        songs = ""
+        for song in songList:
+            songs += song + "\n"
+        return song
