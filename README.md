@@ -1,7 +1,7 @@
 # MSearch-Engine
 # Interfaces
 
-### GET /api/v1/tweet/keyword
+### GET /api/v1/tweet/
 
 Get Tweets based on specific keywords
 
@@ -15,7 +15,7 @@ keyword | string | The keyword that you would like to search
 
 This method returns a JSON object containing the Tweet as well as other relevant information
 
-### GET /api/v1/wikipedia/article
+### GET /api/v1/wikipedia
 
 Grab the Wikipedia page of an artist/song
 
@@ -23,7 +23,7 @@ Grab the Wikipedia page of an artist/song
 
 Request parameter | Value type | Value
 ---|---|---
-artist/song | string | The name of the artist or song
+article | string | The name of the artist or song
 
 ##### Response
 
@@ -33,7 +33,7 @@ Response | Value type | Value
 ---|---|---
 excerpt | string | The excerpt of the Wikipedia article
 
-### GET /api/v1/spotify/artist
+### GET /api/v1/spotify
 
 Grab a list of the top tracks by a given artist.
 
@@ -47,7 +47,7 @@ artist | string | The name of the artist that you would like to search
 
 This method returns a JSON object containing the top tracks by the artist as well as other related information.
 
-### GET /api/v1/spotify/song
+### GET /api/v1/spotify
 
 Grab a list of the similar tracks based on a given song name.
 
