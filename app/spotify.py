@@ -33,3 +33,8 @@ def getArtistID(artistName):
     artistJson = json.loads(artistResponse)
     uid = artistJson['artists']['items'][0]['id']
     return uid
+
+def getRecommendations(artistIDArray, trackIDArray):
+    #?BQCqipoZh2c2pgYYZd4ndn7pTPdtRdPl7mHPJlZGj78nlZ1eR-wK1u7lZNAMuRE4JDMNCwAO1hayB0K-CjYUdebJ127Fv2QRn732xtVrlshW5RhlrDwb72SFLUZ7Ih63alfT9Cnd
+    #urlLink = "https://api.spotify.com/v1/recommendations?seed_artists=" + artistIDArray + "&seed_tracks=" + trackIDArray +  -H "Authorization: Bearer {your access token}"
+    pass
